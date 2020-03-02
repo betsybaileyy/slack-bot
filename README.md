@@ -1,13 +1,54 @@
-<p align="center">
-  <img src="gopher-typing.gif" height="250">
-</p>
+# <B>Feedback Bot</B>
 
-# goslackit
+<img width="647" alt="screenshot 2019-03-07 19 00 26" src="https://user-images.githubusercontent.com/29664539/54006079-c3192d00-4110-11e9-8cfe-b54dfe74c3c8.png">
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/droxey/goslackit)](https://goreportcard.com/report/github.com/droxey/goslackit) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/7ed40f9f3ecf46709879d5fbac28fd9b)](https://www.codacy.com/app/droxey/goslackit?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=droxey/goslackit&amp;utm_campaign=Badge_Grade)
+Feedback Bot is an automated way of delivering and receiving one-to-one feedback over Slack.
 
-[BEW2.5] Fork this repo to begin the Slackbot goroutines challenge presented in class on [Day 7](https://github.com/Make-School-Courses/BEW-2.5-Strongly-Typed-Ecosystems/blob/master/Lessons/Lesson07.md).
+The feedback format uses three descriptors (Good-Better-Best).
 
-## Instructions
+## <B>Usage:</B>
 
-Follow [this link](https://github.com/Make-School-Courses/BEW-2.5-Strongly-Typed-Ecosystems/blob/master/Lessons/Lesson07.md#setup-project) in order to get the project set up.
+- #### Send feedback: Generate a feedback survey and send feedback to a user in your slack.
+<img width="511" alt="screenshot 2019-03-07 19 42 28" src="https://user-images.githubusercontent.com/29664539/54006211-3327b300-4111-11e9-8356-c168d2b0d998.png">
+
+- #### Receive all your feedback weekly or on request in CSV format.
+<img width="656" alt="screenshot 2019-03-07 19 42 10" src="https://user-images.githubusercontent.com/29664539/54006212-3622a380-4111-11e9-948b-aab1c3821b34.png">
+
+- #### Chat with the bot and do things such as:
+  - #### Subscribe and unsubscribe from weekly feedback notifications.
+  - #### Query feedback feedback by one or multiple parameters.
+  - #### Delete feedback you have received.
+
+## <B>Installation</B>
+#### 1. Go to https://api.slack.com/apps and create a new App
+#### 2. Enable `Incoming Webhooks` and `Interactive Components`
+#### 3. Fork and clone the project
+#### 4. Create a PostgresQL database and name it `feedback-bot-db`
+#### 5. Create an .env file in the root of your project, with the following environment variables:
+```
+# Can be edited:
+PORT=3001
+DBNAME=feedback-bot
+
+# Do not edit:
+DBUSER=postgres
+DBPASSWORD=postgres
+DBHOST=feedback-bot-db
+DBPORT=5432
+
+# These are samples. Please get real keys from the slack API dashboard:
+BOT_OAUTH_ACCESS_TOKEN=xoxb-11439472923-880521654032-Sx7Qv46ofo9XODBqAc9pQ5Cl
+VERIFICATION_TOKEN=9BP11qDFQwPP6seaZQeE9QLC
+```
+You can get the BOT_OAUTH_ACCESS_TOKEN and VERIFICATION_TOKEN from the Slack Dashboard
+#### 6. Run the server:
+- Deploy to Heroku
+
+            
+#### 7. Go to your Apps `Interactive Components` section and set the request URL to: `your-app-url/events-endpoint`
+
+## <B>More</B>
+#### If you want to change the feedback type options in the surveys:
+1. Navigate to `utils/attachments.go`
+2. Navigate to the `GenerateFeedbackSurvey()`
+3. In `dialogElement2` change the options to your liking.

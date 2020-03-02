@@ -12,6 +12,8 @@ import (
    NOTE: command_arg_1 and command_arg_2 represent optional parameteras that you define
    in the Slack API UI
 */
+
+// this is a constant that sets the help message
 const helpMessage = "type in '@BOT_NAME <command_arg_1> <command_arg_2>'"
 
 /*
@@ -19,6 +21,8 @@ const helpMessage = "type in '@BOT_NAME <command_arg_1> <command_arg_2>'"
    initiating the socket connection and returning the client.
    DO NOT EDIT THIS FUNCTION. This is a fully complete implementation.
 */
+
+// in this function we are creating the slack client
 func CreateSlackClient(apiKey string) *slack.RTM {
 	api := slack.New(apiKey)
 	rtm := api.NewRTM()
